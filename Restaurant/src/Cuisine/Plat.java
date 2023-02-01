@@ -8,7 +8,7 @@ public abstract class Plat {
 	private int id;
 	private String name;
 	private int number;
-	
+
 	public Plat(int id, String name, int number) {
 		this.id = id;
 		this.name = name;
@@ -19,6 +19,4 @@ public abstract class Plat {
 	public String toString() {
 		return getClass().getSimpleName() + " [id=" + id + ", name=" + name + ", number=" + number + "]";
 	}
-	
-	
 }
