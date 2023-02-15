@@ -64,6 +64,21 @@ public class Menu {
 	public String toString() {
 		return "Menu : \n" + starters + "\n" +main_courses + "\n" + desserts;
 	}
-	
+
+	public ArrayList<Plat> getStarters() {
+		return starters;
+	}
+
+	public ArrayList<Plat> getMain_courses() {
+		return main_courses;
+	}
+
+	public ArrayList<Plat> getDesserts() {
+		return desserts;
+	}
+
+	public TreeMap<String, ArrayList<Plat>> getMenu() {
+		return menu;
+	}
 	
 }

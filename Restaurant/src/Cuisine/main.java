@@ -23,6 +23,8 @@ public class main {
 		Cuisine cuisine = new Cuisine();
 		cuisine.addMenu(menu);
 		cuisine.treatOrder("C:\\Users\\31tis\\git\\repository\\Restaurant\\src\\Cuisine\\restaurant_exemple_commande.json");
+	
+		MenuCreationGUI GUI = new MenuCreationGUI();
 	}
 
 }

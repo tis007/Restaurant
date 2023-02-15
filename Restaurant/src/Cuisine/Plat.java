@@ -1,8 +1,6 @@
 package Cuisine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.TreeMap;
 
 public abstract class Plat {
 	private int id;
@@ -25,6 +23,10 @@ public abstract class Plat {
 
 	public int getId() {
 		return id;
+	}
+	
+	public String description() {
+		return "id=" + id + "\n" + "name=" + name + "\n" + "qty=" + qty + "\n";
 	}
 
 	@Override
