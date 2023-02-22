@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/31tis/Downloads/jackson-annotations-2.14.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/31tis/Downloads/jackson-core-2.14.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/31tis/Downloads/jackson-databind-2.14.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/31tis/git/repository/Restaurant/src/jackson-annotations-2.14.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/31tis/git/repository/Restaurant/src/jackson-core-2.14.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/31tis/git/repository/Restaurant/src/jackson-databind-2.14.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

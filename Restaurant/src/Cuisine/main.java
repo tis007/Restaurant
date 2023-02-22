@@ -19,12 +19,15 @@ public class main {
 		menu.addPlat(new desserts(2, "azeaz", 50));
 		System.out.println(menu);
 		menu.createJson();
-		
+
 		Cuisine cuisine = new Cuisine();
 		cuisine.addMenu(menu);
-		cuisine.treatOrder("C:\\Users\\31tis\\git\\repository\\Restaurant\\src\\Cuisine\\restaurant_exemple_commande.json");
-	
+		cuisine.treatOrder(
+				"C:\\Users\\31tis\\git\\repository\\Restaurant\\src\\Cuisine\\restaurant_exemple_commande.json");
+
 		MenuCreationGUI GUI = new MenuCreationGUI();
+
+		//NewPlatFrame GUI = new NewPlatFrame("desserts", menu);
 	}
 
 }
