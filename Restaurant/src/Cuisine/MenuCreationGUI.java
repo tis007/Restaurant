@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 @SuppressWarnings("serial")
 public class MenuCreationGUI extends JFrame {
 	private int width;
@@ -47,13 +49,45 @@ public class MenuCreationGUI extends JFrame {
 		CenterGridLayout.add(new CoursePanelGUI("main_courses", menu));
 		CenterGridLayout.add(new CoursePanelGUI("desserts", menu));
 		
-		
 		JPanel southPanel = new JPanel();
-		southPanel.setLayout(new FlowLayout(FlowLayout.TRAILING));
+		southPanel.setLayout(new GridLayout(1, 2));
 		this.add(southPanel, BorderLayout.SOUTH);
 		
+		JPanel southLeftPanel = new JPanel();
+		southLeftPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+		southPanel.add(southLeftPanel);
+		
+		JButton treatCommand = new JButton("treat command");
+		treatCommand.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		southLeftPanel.add(treatCommand);
+		
+		JPanel southRightPanel = new JPanel();
+		southRightPanel.setLayout(new FlowLayout(FlowLayout.TRAILING));
+		southPanel.add(southRightPanel);
+		
+		JButton createButton = new JButton("create Menu");
+		southRightPanel.add(createButton);
+		createButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					menu.createJson();
+				} catch (JsonProcessingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 		JButton cancelBtn = new JButton("cancel");
-		southPanel.add(cancelBtn);
+		southRightPanel.add(cancelBtn);
 		cancelBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -61,8 +95,8 @@ public class MenuCreationGUI extends JFrame {
 				frame.dispose();
 			}
 		});
+		
 		this.setVisible(true);
-
 	}
 
 }

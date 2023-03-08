@@ -2,7 +2,6 @@ package Cuisine;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,21 +15,22 @@ import javax.swing.JPanel;
 public class NewPlatFrame extends JFrame {
 	private int width;
 	private int height;
-	private Plat plat;
 	private String courseName;
 	private Menu menu;
+	private CoursePanelGUI panelGui;
 
-	public NewPlatFrame(String courseName, Menu menu, int width, int height, String title) {
+	public NewPlatFrame(String courseName, Menu menu, int width, int height, String title, CoursePanelGUI panelGui) {
 		super(title);
 		this.width = width;
 		this.height = height;
 		this.courseName = courseName;
 		this.menu = menu;
+		this.panelGui = panelGui;
 		this.setUpAndDisplay(this);
 	}
 
-	public NewPlatFrame(String courseName, Menu menu) {
-		this(courseName, menu, 300, 250, "New Plat");
+	public NewPlatFrame(String courseName, Menu menu, CoursePanelGUI panelGui) {
+		this(courseName, menu, 300, 250, "New Plat", panelGui);
 	}
 
 	public void setUpAndDisplay(JFrame frame) {
@@ -69,6 +69,7 @@ public class NewPlatFrame extends JFrame {
 				String name = topInpPane.getInput();
 				Integer qty = Integer.parseInt(bottomInpPane.getInput());
 				addPlatToMenu(courseName, menu.getMenu().get(courseName).size() + 1 , name, qty);
+				panelGui.updateList();
 				frame.dispose();
 			}
 		});
@@ -89,8 +90,6 @@ public class NewPlatFrame extends JFrame {
 		JPanel westNothing = new JPanel();
 		this.add(westNothing, BorderLayout.WEST);
 		
-		this.revalidate();
-		this.repaint();
 	}
 	
 	public void addPlatToMenu(String courseName, int id, String name, int qty) {

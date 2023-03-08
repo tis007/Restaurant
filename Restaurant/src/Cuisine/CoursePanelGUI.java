@@ -1,57 +1,52 @@
 package Cuisine;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 @SuppressWarnings("serial")
 public class CoursePanelGUI extends JPanel {
 	private Menu menu;
 	private String courseName;
 	private ScrollTextArea listItemPanel;
+	private CoursePanelGUI thisGui;
 
 	public CoursePanelGUI(String courseName, Menu menu) {
 		this.courseName = courseName;
 		this.menu = menu;
-		this.setLayout(new GridLayout(2, 1));
+		this.setLayout(new BorderLayout());
+		this.thisGui = this;
 
-		//JScrollPane scrollPane = new JScrollPane(this, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		
+		// JScrollPane scrollPane = new JScrollPane(this,
+		// JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+		// JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
 		JPanel btnPanel = new JPanel();
 		btnPanel.setLayout(new FlowLayout());
-		this.add(btnPanel);
-		
+		this.add(btnPanel, BorderLayout.NORTH);
+
 		JButton btn = new JButton(courseName);
 		btn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				NewPlatFrame platFrame = new NewPlatFrame(courseName, menu);
+				@SuppressWarnings("unused")
+				NewPlatFrame platFrame = new NewPlatFrame(courseName, menu, thisGui);
 				updateList();
 			}
 		});
-		btnPanel.add(btn);
+		btnPanel.add(btn, BorderLayout.CENTER);
 
 		listItemPanel = new ScrollTextArea();
 		this.add(listItemPanel);
-
-		addMenu(new desserts(1, "aeaze", 234));
-		
-		listItemPanel.revalidate();
-		listItemPanel.repaint();
-		this.revalidate();
-		this.repaint();
+		this.add(new JPanel(), BorderLayout.SOUTH);
 	}
-	
+
 	public void addMenu(Plat plat) {
 		menu.addPlat(plat);
 		updateList();
@@ -64,5 +59,6 @@ public class CoursePanelGUI extends JPanel {
 			txt += plat1.description() + "\n";
 		}
 		listItemPanel.setPaneText(txt);
+		listItemPanel.repaint();
 	}
 }

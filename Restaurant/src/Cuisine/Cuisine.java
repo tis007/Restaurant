@@ -22,7 +22,6 @@ public class Cuisine {
 		this.menu = menu;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void treatOrder(String FileName) throws StreamReadException, DatabindException, IOException, OrderException {
 		Map<?, ?> orderMap = mapper.readValue(new File(FileName), Map.class);
 		System.out.println(orderMap);

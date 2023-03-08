@@ -1,7 +1,5 @@
 package Cuisine;
 
-import java.util.HashMap;
-
 public abstract class Plat {
 	private int id;
 	private String name;
