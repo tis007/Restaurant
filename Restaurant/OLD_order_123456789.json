@@ -1,0 +1,33 @@
+{
+	"id": "xxx",
+	"starters": [
+		{
+			"id": 2,
+			"qty": 1
+		},
+		{
+			"id": 3,
+			"qty": 2
+		}
+	],
+	"main_courses": [
+		{
+			"id": 1,
+			"qty": 1
+		},
+		{
+			"id": 2,
+			"qty": 1
+		},
+		{
+			"id": 3,
+			"qty": 1
+		}
+	],
+	"desserts": [
+		{
+			"id": 1,
+			"qty": 2
+		}
+	]
+}

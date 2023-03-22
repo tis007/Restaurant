@@ -1,1 +1,1 @@
-{"desserts":[],"main_courses":[],"starters":[{"id":1,"name":"dddazd","qty":0},{"id":2,"name":"azdazd","qty":0},{"id":3,"name":"azdaz","qty":0}]}
+{"desserts":[{"id":1,"description":"du rien","qty":3},{"id":2,"description":"encore rien","qty":1}],"main_courses":[{"id":1,"description":"saumon","qty":1},{"id":2,"description":"pates a l'eau","qty":2}],"starters":[{"id":1,"description":"j'e sais rien moi sque tu veux","qty":4},{"id":2,"description":"saucisson","qty":2}]}

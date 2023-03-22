@@ -6,6 +6,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,6 +23,7 @@ public class MenuCreationGUI extends JFrame {
 	private int width;
 	private int height;
 	private Menu menu = new Menu();
+	private ArrayList<OrderException> exceptionsList;
 
 	public MenuCreationGUI(int width, int height, String title) {
 		super(title);
@@ -62,7 +67,23 @@ public class MenuCreationGUI extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				exceptionsList = new ArrayList<OrderException>();
+				Cuisine cuisine = new Cuisine(menu);
+				File dir = new File("C:\\Users\\31tis\\git\\repository\\Restaurant");
+				File[] foundFiles = dir.listFiles(new FilenameFilter() {
+				    public boolean accept(File dir, String name) {
+				        return name.startsWith("order_") && name.endsWith(".json");
+				    }
+				});
+
+				for (File file : foundFiles) {
+					try {
+						cuisine.treatOrder(file);
+					} catch (IOException | OrderException e1) {
+						System.err.println(e1.getMessage());
+					}
+					
+				}    
 			}
 		});
 		southLeftPanel.add(treatCommand);

@@ -11,9 +11,14 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Cuisine {
-	ObjectMapper mapper = new ObjectMapper();
-	Menu menu = new Menu();
+	private ObjectMapper mapper = new ObjectMapper();
+	private Menu menu = new Menu();
+	private ArrayList<Plat> platNotFullfilledList;
 
+	public Cuisine(Menu menu) {
+		this.menu = menu;
+	}
+	
 	public Cuisine() {
 		menu = new Menu();
 	}
@@ -22,11 +27,15 @@ public class Cuisine {
 		this.menu = menu;
 	}
 	
-	public void treatOrder(String FileName) throws StreamReadException, DatabindException, IOException, OrderException {
-		Map<?, ?> orderMap = mapper.readValue(new File(FileName), Map.class);
-		System.out.println(orderMap);
+	public void treatOrderString(String FileName) throws StreamReadException, DatabindException, IOException, OrderException {
+		File file = new File(FileName);
+		treatOrder(file);
+	}
+	
+	public void treatOrder(File FileName) throws StreamReadException, DatabindException, IOException, OrderException {
+		Map<?, ?> orderMap = mapper.readValue(FileName, Map.class);
 		if (!checkIfOrderCanBeFullfilled(orderMap)) {
-			throw new OrderException("Order can't be fullfilled, here is the menu \n" + menu);
+			throw new OrderException(FileName.getName() + " can't be fullfilled for the items ;\n" + platNotFullfilledList);
 		}
 		removeAllQty(orderMap);
 	}
@@ -53,6 +62,7 @@ public class Cuisine {
 
 	@SuppressWarnings("unchecked")
 	public Boolean checkIfOrderCanBeFullfilled(Map<?, ?> order) {
+		platNotFullfilledList = new ArrayList<Plat>();
 		ArrayList<HashMap<String, Integer>> starters = (ArrayList<HashMap<String, Integer>>) order.get("starters");
 		ArrayList<HashMap<String, Integer>> main_courses = (ArrayList<HashMap<String, Integer>>) order.get("main_courses");
 		ArrayList<HashMap<String, Integer>> desserts = (ArrayList<HashMap<String, Integer>>) order.get("desserts");
@@ -75,6 +85,7 @@ public class Cuisine {
 
 	public Boolean testEnough(String courseName, int id, int nbr) {
 		if (((menu.getNumberOf(courseName, id) - nbr) < 0)) {
+			platNotFullfilledList.add(menu.getPlatCourseID(courseName, id));
 			return false;
 		} else {
 			return true;

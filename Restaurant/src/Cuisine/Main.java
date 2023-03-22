@@ -1,8 +1,13 @@
 package Cuisine;
 
+import java.io.IOException;
+
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StreamReadException, DatabindException, IOException, OrderException {
 //		Menu menu = new Menu();
 //		menu.addPlat(new starters(1, "start1", 40));
 //		menu.addPlat(new starters(2, "start2", 40));

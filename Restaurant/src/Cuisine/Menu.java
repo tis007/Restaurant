@@ -45,6 +45,10 @@ public class Menu {
 		return getRightPlat(menu.get(course), id).getQty();
 	}
 	
+	public Plat getPlatCourseID(String course, int id) {
+		return getRightPlat(menu.get(course), id);
+	}
+	
 	public Plat getRightPlat(ArrayList<Plat> platArray, int id) {
 		for(Plat plat: platArray) {
 			if (plat.getId() == id) {
