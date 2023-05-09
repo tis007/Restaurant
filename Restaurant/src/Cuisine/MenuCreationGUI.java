@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,7 +21,6 @@ public class MenuCreationGUI extends JFrame {
 	private int width;
 	private int height;
 	private Menu menu = new Menu();
-	private ArrayList<OrderException> exceptionsList;
 
 	public MenuCreationGUI(int width, int height, String title) {
 		super(title);
@@ -62,12 +59,11 @@ public class MenuCreationGUI extends JFrame {
 		southLeftPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
 		southPanel.add(southLeftPanel);
 		
-		JButton treatCommand = new JButton("treat command");
-		treatCommand.addActionListener(new ActionListener() {
+		JButton treatCommandBtn = new JButton("treat command");
+		treatCommandBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				exceptionsList = new ArrayList<OrderException>();
 				Cuisine cuisine = new Cuisine(menu);
 				File dir = new File("C:\\Users\\31tis\\git\\repository\\Restaurant");
 				File[] foundFiles = dir.listFiles(new FilenameFilter() {
@@ -86,7 +82,7 @@ public class MenuCreationGUI extends JFrame {
 				}    
 			}
 		});
-		southLeftPanel.add(treatCommand);
+		southLeftPanel.add(treatCommandBtn);
 		
 		JPanel southRightPanel = new JPanel();
 		southRightPanel.setLayout(new FlowLayout(FlowLayout.TRAILING));

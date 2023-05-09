@@ -66,6 +66,7 @@ public class Cuisine {
 		ArrayList<HashMap<String, Integer>> starters = (ArrayList<HashMap<String, Integer>>) order.get("starters");
 		ArrayList<HashMap<String, Integer>> main_courses = (ArrayList<HashMap<String, Integer>>) order.get("main_courses");
 		ArrayList<HashMap<String, Integer>> desserts = (ArrayList<HashMap<String, Integer>>) order.get("desserts");
+		//System.out.println(desserts);
 		if (testEnoughList("starters", starters) && testEnoughList("main_courses", main_courses)
 				&& testEnoughList("desserts", desserts)) {
 			return true;
