@@ -38,6 +38,7 @@ public class Cuisine {
 			throw new OrderException(FileName.getName() + " can't be fullfilled for the items ;\n" + platNotFullfilledList);
 		}
 		removeAllQty(orderMap);
+		System.out.println("Commande traité");
 	}
 	
 	@SuppressWarnings("unchecked")
